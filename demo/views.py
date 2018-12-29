@@ -1,4 +1,5 @@
 import requests
+import math
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -20,5 +21,26 @@ def countries(request):
     return render(request, 'countries.html', {'countries': resp.json()})
 
 
-def india(request):
-    pass
+def country(request):
+    return render(request, 'country.html')
+
+
+def factorial(request):
+    if request.method == "GET":
+        return render(request, 'factorial.html')
+    else:  # POST
+        number = int(request.POST['number'])
+        fact = math.factorial(number)
+        return render(request, 'factorial.html',
+                      {'number': number, 'fact': fact})
+
+
+def country_info(request):
+    # get country info about country and send it to template
+    code = request.GET['code']
+    URL = "https://restcountries.eu/rest/v2/alpha/" + code
+    resp = requests.get(URL)
+    if resp.status_code != 200:
+        return render(request, 'country_info.html')
+    else:
+        return render(request, 'country_info.html', {'country': resp.json()})

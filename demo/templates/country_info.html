@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Country Information</title>
+    <style>
+        body { font-family:verdana; font-size:12pt;}
+        h2 {color:red}
+    </style>
+</head>
+<body>
+
+<h1>Country Information</h1>
+
+{% if country %}
+<table border="1" cellpadding="5pt">
+    <tr>
+        <td>Name</td>
+        <td> {{country.name}}</td>
+    </tr>
+    <tr>
+        <td>Capital</td>
+        <td> {{country.capital}}</td>
+    </tr>
+    <tr>
+        <td>Region</td>
+        <td> {{country.region}}</td>
+    </tr>
+    <tr>
+        <td>Population</td>
+        <td> {{country.population}}</td>
+    </tr>
+    <tr>
+        <td>Flag</td>
+        <td><img style="width:300px;height:300px" src="{{country.flag}}"/></td>
+    </tr>
+</table>
+
+{%else%}
+   <h2>Sorry! Invalid country code!</h2>
+{% endif %}
+
+
+</body>
+</html>

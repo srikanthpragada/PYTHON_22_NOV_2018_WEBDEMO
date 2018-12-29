@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Factorial</title>
+</head>
+<body>
+<h2>Factorial </h2>
+<form action="/demo/factorial/" method="POST">
+    {% csrf_token %}
+    Number : <input type="number" name="number" value="{{number}}" required="required"/>
+    <p/>
+    <input type="submit" value="Factorial"/>
+
+    {% if fact %}
+      <h3> Factorial : {{fact}} </h3>
+    {% endif %}
+
+</form>
+
+</body>
+</html>
