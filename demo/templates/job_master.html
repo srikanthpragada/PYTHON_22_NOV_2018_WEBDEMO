@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Jobs</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+</head>
+<body>
+<div class="header">Jobs</div>
+<div class="menu">
+    <a href="/demo/listjobs">List</a>
+    &nbsp;&nbsp;
+    <a href="/demo/addjob">Add</a>
+</div>
+{% block content %}
+{% endblock %}
+</body>
+</html>

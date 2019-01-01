@@ -1,0 +1,31 @@
+{% extends "job_master.html" %}
+{% block content %}
+<h2>List of Jobs</h2>
+
+<table style="width:100%">
+    <tr class="tabhead">
+        <th>Id</th>
+        <th>Title</th>
+        <th>Min Salary</th>
+        <th>Max Salary</th>
+        <th></th>
+    </tr>
+    {% for job in jobs %}
+
+    <tr>
+        <td> {{job.0}}</td>
+        <td> {{job.1}}</td>
+        <td> {{job.2}}</td>
+        <td> {{job.3}}</td>
+        <td>
+            <a href="/demo/deletejob/{{job.0}}">Delete</a>
+            &nbsp;
+            <a href="/demo/editjob/{{job.0}}">Edit</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock content%}
