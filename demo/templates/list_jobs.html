@@ -18,7 +18,8 @@
         <td> {{job.2}}</td>
         <td> {{job.3}}</td>
         <td>
-            <a href="/demo/deletejob/{{job.0}}">Delete</a>
+            <a href="/demo/deletejob/{{job.0}}"
+               onclick="return confirm('Do you want to delete?')" >Delete</a>
             &nbsp;
             <a href="/demo/editjob/{{job.0}}">Edit</a>
         </td>

@@ -8,7 +8,7 @@ class ContactForm(forms.Form):
     cc_myself = forms.BooleanField(required=False)
 
 
-class AddJobForm(forms.Form):
+class JobForm(forms.Form):
     title = forms.CharField(max_length=30)
     minsal = forms.IntegerField( label='Min Salary')
     maxsal = forms.IntegerField( label= 'Max Salary')

@@ -11,4 +11,7 @@ urlpatterns = [
     path('factorial/', views.factorial),
     path('listjobs/', job_views.list),
     path('addjob/', job_views.add),
+    path('deletejob/<int:jobid>', job_views.delete_job),
+    path('editjob/<int:jobid>', job_views.edit_job),
+    path('updatejob/<int:jobid>', job_views.update_job),
 ]
