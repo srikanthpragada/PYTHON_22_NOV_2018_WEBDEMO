@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from . import views, job_views
+from . import views, job_views, cookie_views
 
 urlpatterns = [
     path('index/', views.index),
@@ -14,4 +14,6 @@ urlpatterns = [
     path('deletejob/<int:jobid>', job_views.delete_job),
     path('editjob/<int:jobid>', job_views.edit_job),
     path('updatejob/<int:jobid>', job_views.update_job),
+    path('selectcity/', cookie_views.select_city),
+    path('movies/', cookie_views.list_movies),
 ]
