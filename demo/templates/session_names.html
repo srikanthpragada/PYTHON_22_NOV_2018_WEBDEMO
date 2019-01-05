@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Languages</title>
+</head>
+<body>
+
+<h2>Languages Known</h2>
+<ul>
+    {% for n in languages %}
+    <li> {{ n }}</li>
+    {% endfor %}
+</ul>
+
+<p></p>
+<form method="post">
+    {% csrf_token %}
+    Language Known : <input type="text" name="lang"/>
+    <p></p>
+    <input type="submit" value="Add"/>
+</form>
+</body>
+</html>

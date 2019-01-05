@@ -44,3 +44,19 @@ def country_info(request):
         return render(request, 'country_info.html')
     else:
         return render(request, 'country_info.html', {'country': resp.json()})
+
+
+def session_names(request):
+    # either take existing list or create empty list
+    if 'langs' in request.session:
+        langs = request.session['langs']
+    else:
+        langs = []
+
+    if request.method == "POST":
+        # add lang to list
+        lang = request.POST["lang"]
+        langs.append(lang)
+        request.session['langs'] = langs
+
+    return render(request, 'session_names.html', {'languages': langs})

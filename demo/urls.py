@@ -16,4 +16,5 @@ urlpatterns = [
     path('updatejob/<int:jobid>', job_views.update_job),
     path('selectcity/', cookie_views.select_city),
     path('movies/', cookie_views.list_movies),
+    path('langs/', views.session_names),
 ]
