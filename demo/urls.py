@@ -17,4 +17,6 @@ urlpatterns = [
     path('selectcity/', cookie_views.select_city),
     path('movies/', cookie_views.list_movies),
     path('langs/', views.session_names),
+    path('ajaxdemo/', views.ajax_demo),
+    path('datetime/', views.getdatetime),
 ]

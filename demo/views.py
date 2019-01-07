@@ -1,5 +1,6 @@
 import requests
 import math
+import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
 
@@ -60,3 +61,12 @@ def session_names(request):
         request.session['langs'] = langs
 
     return render(request, 'session_names.html', {'languages': langs})
+
+
+def ajax_demo(request):
+    return render(request, 'ajax_demo.html')
+
+
+def getdatetime(request):
+    now = datetime.datetime.now()
+    return HttpResponse(str(now))
