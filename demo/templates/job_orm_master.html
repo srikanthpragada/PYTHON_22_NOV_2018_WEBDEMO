@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Jobs</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+</head>
+<body>
+<div class="header">Jobs</div>
+<div class="menu">
+    <a href="/demo/orm/listjobs">List Jobs</a>
+    &nbsp;
+    <a href="/demo/orm/addjob">Add Job</a>
+    &nbsp;
+    <a href="/demo/orm/search">Search</a>
+</div>
+{% block content %}
+{% endblock %}
+</body>
+</html>

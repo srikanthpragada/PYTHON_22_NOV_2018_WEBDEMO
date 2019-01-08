@@ -1,0 +1,30 @@
+{% extends "job_orm_master.html" %}
+{% block content %}
+<h2>List of Jobs</h2>
+
+<table style="width:100%">
+    <tr class="tabhead">
+        <th>Id</th>
+        <th>Title</th>
+        <th>Min Salary</th>
+        <th>Max Salary</th>
+        <th></th>
+    </tr>
+    {% for job in jobs %}
+
+    <tr>
+        <td> {{job.id}}</td>
+        <td> {{job.title}}</td>
+        <td style="text-align:right"> {{job.minsal}}</td>
+        <td style="text-align:right"> {{job.maxsal}}</td>
+        <td style="text-align:center">
+            <a href="/demo/orm/deletejob/{{job.id}}"
+               onclick="return confirm('Do you want to delete?')" >Delete</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock content%}
