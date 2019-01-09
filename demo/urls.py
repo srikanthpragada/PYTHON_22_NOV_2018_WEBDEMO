@@ -21,5 +21,8 @@ urlpatterns = [
     path('datetime/', views.getdatetime),
     path('orm/listjobs/', job_orm_views.list),
     path('orm/addjob/', job_orm_views.add),
+    path('orm/deletejob/<int:jobid>', job_orm_views.delete_job),
+    path('orm/searchjobs/', job_orm_views.search_jobs),
+    path('orm/getjobs/', job_orm_views.get_jobs),
 
 ]

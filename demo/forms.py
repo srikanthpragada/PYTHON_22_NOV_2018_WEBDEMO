@@ -1,4 +1,5 @@
 from django import forms
+from .models import Job
 
 
 class ContactForm(forms.Form):
@@ -10,5 +11,11 @@ class ContactForm(forms.Form):
 
 class JobForm(forms.Form):
     title = forms.CharField(max_length=30)
-    minsal = forms.IntegerField( label='Min Salary')
-    maxsal = forms.IntegerField( label= 'Max Salary')
+    minsal = forms.IntegerField(label='Min Salary')
+    maxsal = forms.IntegerField(label='Max Salary')
+
+
+class AddJobForm(forms.ModelForm):
+    class Meta:
+        model = Job
+        fields = ['title', 'minsal', 'maxsal']

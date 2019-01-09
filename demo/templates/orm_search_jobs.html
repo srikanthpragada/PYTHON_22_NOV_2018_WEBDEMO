@@ -1,0 +1,23 @@
+{% extends "job_orm_master.html" %}
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  function getJobs()
+  {
+    $.get("/demo/orm/getjobs", { title : $("#title").val() }, showJobs);
+  }
+
+  function showJobs(jobs)
+  {
+     console.log(jobs)
+  }
+</script>
+<h2>Search Jobs</h2>
+Title : <input type="text" id="title" />
+<button onclick="getJobs()">Search</button>
+<p></p>
+<table>
+
+</table>
+
+{% endblock content%}
