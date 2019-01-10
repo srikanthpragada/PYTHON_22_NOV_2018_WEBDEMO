@@ -1,0 +1,20 @@
+<h2>List of Jobs</h2>
+
+<table style="width:100%">
+    <tr class="tabhead">
+        <th>Id</th>
+        <th>Title</th>
+        <th>Min Salary</th>
+        <th>Max Salary</th>
+    </tr>
+    {% for job in object_list %}
+
+    <tr>
+        <td> {{job.id}}</td>
+        <td> {{job.title}}</td>
+        <td> {{job.minsal}}</td>
+        <td> {{job.maxsal}}</td>
+    </tr>
+    {% endfor %}
+
+</table>

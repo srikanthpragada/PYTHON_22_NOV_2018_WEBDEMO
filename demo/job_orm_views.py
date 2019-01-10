@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from .models import Job
 from .forms import AddJobForm
 
 
-def list(request):
+def list_jobs(request):
     return render(request, 'orm_list_jobs.html',
                   {'jobs': Job.objects.all()})
 
 
-def add(request):
+def add_job(request):
     if request.method == "GET":
         return render(request, 'orm_add_job.html', {'form': AddJobForm()})
     else:
@@ -33,7 +33,7 @@ def search_jobs(request):
 
 def get_jobs(request):
     title = request.GET['title']
-    print(title)
-    jobs = Job.objects.filter(title__contains=title).values('title','minsal')
-    listjobs = list(jobs)   # Convert QuerySet to list
-    return JsonResponse(listjobs, safe=False)
+    # values() converts job object to dict
+    jobs = Job.objects.filter(title__contains=title).values()
+    jobslist = list(jobs)  # Convert QuerySet to list
+    return JsonResponse(jobslist, safe=False)

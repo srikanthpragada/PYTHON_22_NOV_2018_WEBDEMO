@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from . import views, job_views, cookie_views, job_orm_views
+from . import views, job_views, cookie_views, job_orm_views, class_views
 
 urlpatterns = [
     path('index/', views.index),
@@ -19,10 +19,12 @@ urlpatterns = [
     path('langs/', views.session_names),
     path('ajaxdemo/', views.ajax_demo),
     path('datetime/', views.getdatetime),
-    path('orm/listjobs/', job_orm_views.list),
-    path('orm/addjob/', job_orm_views.add),
+    path('orm/listjobs/', job_orm_views.list_jobs),
+    path('orm/addjob/', job_orm_views.add_job),
     path('orm/deletejob/<int:jobid>', job_orm_views.delete_job),
     path('orm/searchjobs/', job_orm_views.search_jobs),
     path('orm/getjobs/', job_orm_views.get_jobs),
+    path('about/', class_views.AboutView.as_view()),
+    path('jobs/', class_views.JobsListView.as_view()),
 
 ]

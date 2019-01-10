@@ -4,19 +4,54 @@
 <script>
   function getJobs()
   {
-    $.get("/demo/orm/getjobs", { title : $("#title").val() }, showJobs);
+    $.getJSON("/demo/orm/getjobs",
+        { title : $("#title").val() },
+        showJobs);
   }
 
   function showJobs(jobs)
   {
-     console.log(jobs)
+     $("#jobsTable").css("visibility","hidden"); // hide table
+     $("#message").text("");
+
+     if (jobs.length == 0)
+     {
+        $("#message").text("Sorry! No job found!");
+        return;
+     }
+
+     // Add rows to table
+     $("#jobs").text("");   // clear table body
+     $.each(jobs,
+         function(index,job) {
+            $("#jobs").append("<tr><td>" + job.id  +
+              "</td><td>" + job.title + "</td><td>" + job.minsal +
+              "</td><td>" + job.maxsal + "</td></tr>");
+         }
+      );
+
+      $("#jobsTable").css("visibility","visible");
+
   }
+
 </script>
 <h2>Search Jobs</h2>
-Title : <input type="text" id="title" />
+Title : <input type="text" id="title"/>
 <button onclick="getJobs()">Search</button>
+<span id="message"></span>
 <p></p>
-<table>
+<table width="100%" border="1" id="jobsTable" style="visibility:hidden">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Min Salary</th>
+        <th>Max Salary</th>
+    </tr>
+    </thead>
+    <tbody id="jobs">
+
+    </tbody>
 
 </table>
 
