@@ -5,9 +5,64 @@
     <title>Rest Client</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+        URL = "/demo/restjobs/"
         function addJob()
         {
+           $.ajax(
+             {"url": URL,
+              "data": {
+                       "title" : $("#title").val(),
+                       "minsal" : $("#minsal").val(),
+                       "maxsal" : $("#maxsal").val()
+                      },
+             "type" : "post",
+             "success" :
+                 function() {
+                    alert("Job has been added successfully!");
+                 },
+             "error" :
+                 function() {
+                    alert("Job could not be added due to some error!");
+                 }
+             }
+           ); // ajax()
+
+        }  // addJob
+
+        function getJobs()
+        {
+           $.getJSON(URL,{}, showJobs);
         }
+
+        function showJobs(jobs)
+        {
+            $("#jobs").html("");
+            list = "";
+            for(i = 0; i < jobs.length ; i ++)
+            {
+               list += "<li>" + jobs[i].id + ","  + jobs[i].title + "</li>";
+            }
+            $("#jobs").html(list);
+        }
+
+        function deleteJob()
+        {
+           $.ajax(
+             {"url": URL + $("#id").val(),
+             "type" : "delete",
+             "success" :
+                 function() {
+                    alert("Job has been deleted successfully!");
+                 },
+             "error" :
+                 function() {
+                    alert("Could not delete job due to some error!");
+                 }
+             }
+           ); // ajax()
+
+        }  // deleteJob
+
     </script>
 </head>
 <body>
@@ -17,6 +72,19 @@ Min Sal : <input type="number" id="minsal"/>
 Max Sal : <input type="number" id="maxsal"/>
 <p/>
 <button onclick="addJob()">Add Job</button>
+<hr/>
+<p></p>
+<ul id="jobs">
+</ul>
+<button onclick="getJobs()">Get Jobs</button>
+
+<hr/>
+<p></p>
+<h2>Delete Job</h2>
+Id : <input type="text" id="id"/>
+<p/>
+<button onclick="deleteJob()">Delete Job</button>
+<p></p>
 
 </body>
 </html>

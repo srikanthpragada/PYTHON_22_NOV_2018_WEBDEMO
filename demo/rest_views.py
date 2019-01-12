@@ -21,7 +21,7 @@ def job_process(request):
             serializer.save()
             return Response(serializer.data)
         else:
-            return Response(serializer.errors, status=400)
+            return Response(serializer.errors, status=400)  # Bad request
 
 
 @api_view(['GET', 'DELETE'])
@@ -36,4 +36,4 @@ def one_job_process(request, id):
         return Response(serializer.data)
     else:
         job.delete()
-        return Response(status=204)
+        return Response(status=204)  # No content
